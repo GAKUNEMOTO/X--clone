@@ -1,0 +1,52 @@
+.signup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    text-align: center;
+    background-color:#0f1419 ;
+    width: 100%;
+    height: 100vh;
+}
+
+.box__container {
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    padding: 50px;
+    width: 100%;
+    margin: 0px;
+    background-color: white;
+}
+
+h2 {
+    font-size: 40px;
+}
+
+.email {
+    margin-bottom: 20px;
+}
+
+.password {
+    margin-bottom: 20px;
+}
+
+.btn_submit {
+    background-color: var(--x-color) !important;
+    color: white !important;
+    font-weight: 900 !important;
+    border-radius: 30px !important;
+}
+
+.signup_email {
+    margin-bottom: 20px;
+}
+
+.signup_password {
+    margin-bottom: 20px;
+}
+
+
+.confirmPassword {
+    margin-bottom: 20px;
+}

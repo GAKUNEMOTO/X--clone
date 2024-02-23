@@ -1,0 +1,13 @@
+.home {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    padding: 0;
+}
+
+
+body {
+    --x-color: #50b7f5;
+    --x-background: #e6ecf0;
+    height: 100%;
+  }

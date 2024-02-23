@@ -1,0 +1,14 @@
+.profile {
+    display: flex;
+    flex: 0.9;  /* You can adjust this value according to your needs */
+    border-right: 1px solid var(--x-background);
+    overflow-y: scroll;
+    height: 100vh;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.profile::-webkit-scrollbar {
+    display: none;
+}

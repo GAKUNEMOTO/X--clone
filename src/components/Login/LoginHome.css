@@ -1,0 +1,40 @@
+
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    text-align: center;
+    background-color:#0f1419 ;
+    width: 100%;
+    height: 100vh;
+}
+
+.login__icon {
+    font-size: 70px !important;
+    padding: 30px !important;
+    margin-top: 10px;
+}
+
+.card__container {
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    padding: 40px;
+    width: 100%;
+   
+}
+
+h1 {
+    font-size: 80px;
+    padding: 20px;
+    margin: 0; 
+}
+
+h2 {
+    font-size: 40px;
+}
+
+p {
+    margin-top: 20px;
+}

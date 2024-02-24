@@ -1,6 +1,8 @@
 import React, { useState, useRef } from 'react';
 import { Avatar, Button, IconButton } from '@mui/material';
+import GifBoxOutlinedIcon from '@mui/icons-material/GifBoxOutlined';
 import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined';
+import EmojiEmotionsOutlinedIcon from '@mui/icons-material/EmojiEmotionsOutlined';
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { storage } from '../../../firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
@@ -50,25 +52,25 @@ const Tweetbox = () => {
 
     const sendTweet = async (e) => {
         e.preventDefault();
-    
+
         if (!tweetText && !tweetImage) {
             alert("Please enter text or upload an image before tweeting.");
             return;
         }
-    
+
         let imageUrl = null;
-    
+
         // Check if an image is selected
         if (tweetImage) {
             // Upload the image and get the download URL
             imageUrl = await uploadFile();
-    
+
             if (!imageUrl) {
                 alert("Failed to upload image. Please try again.");
                 return;
             }
         }
-    
+
         // Construct tweet data
         const tweetData = {
             avatar: "http://shincode.info/wp-content/upload/2021/12/icon.png",
@@ -80,23 +82,23 @@ const Tweetbox = () => {
             // Include the image field only if imageUrl is present
             ...(imageUrl && { image: imageUrl }),
         };
-    
+
         try {
             // Add the tweet data to the Firestore collection
             await addDoc(collection(db, "post"), tweetData);
             console.log("Tweet added successfully:", tweetData);
-    
+
             // Reset state, animate, and reset file input
             setTweetText("");
             setTweetImage(null);
-    
+
             setTweetBoxProps.start({
                 opacity: 1,
                 transform: 'translateY(0)',
                 from: { opacity: 0, transform: 'translateY(-20px)' },
                 delay: 200,
             });
-    
+
             // Reset file input
             if (fileInputRef.current) {
                 fileInputRef.current.value = "";
@@ -117,22 +119,21 @@ const Tweetbox = () => {
                         value={tweetText}
                         onChange={(e) => setTweetText(e.target.value)}
                     />
+                    {/* Input moved into the Button */}
+                    <input
+                        ref={fileInputRef}
+                        type='file'
+                        style={{ display: 'none' }}
+                        onChange={(e) => setTweetImage(e.target.files[0])}
+                    />
                 </div>
 
-                {/* Hidden file input */}
-                <input
-                    ref={fileInputRef}
-                    type='file'
-                    style={{ display: 'none' }}
-                    onChange={(e) => setTweetImage(e.target.files[0])}
-                />
-
-                {/* IconButton for file selection */}
-                <div className='imgInput'>
-                    <IconButton onClick={handleImageClick}>
-                        <ImageOutlinedIcon />
-                    </IconButton>
+                <div className='icons'>
+                <ImageOutlinedIcon onClick={handleImageClick}  style={{fontSize:"30px"}}/>
+                <GifBoxOutlinedIcon style={{fontSize:"30px"}}/>
+                <EmojiEmotionsOutlinedIcon style={{fontSize:"30px"}}/>
                 </div>
+                
 
                 <Button
                     className='tweetBox__tweetButton'
